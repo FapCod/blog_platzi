@@ -1,3 +1,11 @@
+Imagenes del proyecto
+[](https://github.com/FapCod/blog_platzi/blob/master/imagenesScreen/1.JPG)
+[](https://github.com/FapCod/blog_platzi/blob/master/imagenesScreen/2.JPG)
+[](https://github.com/FapCod/blog_platzi/blob/master/imagenesScreen/3.JPG)
+[](https://github.com/FapCod/blog_platzi/blob/master/imagenesScreen/4.JPG)
+[](https://github.com/FapCod/blog_platzi/blob/master/imagenesScreen/5.JPG)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
