@@ -1,37 +1,35 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import * as usuariosActions from "../../actions/usuariosActions";
+import Spinner from "../General/Spinner";
+import Fatal from "../General/Fatal";
+import Tabla from "./Tabla";
 class Usuarios extends Component {
-  // async componentDidMount() {
-  // 	const respuesta = await axios.get('https://jsonplaceholder.typicode.com/users');
-  // 	this.setState({
-  // 		usuarios: respuesta.data
-  // 	});
-  // }
+  componentDidMount() {
+    if (!this.props.usuarios.length) {
+      this.props.traerTodos();
+    }
+  }
 
-  ponerFilas = () =>
-    this.props.usuarios.map(usuario => (
-      <tr key={usuario.id}>
-        <td>{usuario.name}</td>
-        <td>{usuario.email}</td>
-        <td>{usuario.website}</td>
-      </tr>
-    ));
+  ponerContenido = () => {
+    if (this.props.cargando) {
+      return <Spinner />;
+    }
+
+    if (this.props.error) {
+      return <Fatal mensaje={this.props.error}></Fatal>;
+    }
+
+    return <Tabla />;
+  };
 
   render() {
-    // console.log(this.props);
+    // console.log(this.props.cargando);
+    // console.log(this.props.error);
     return (
       <div>
-        <table className="tabla">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Correo</th>
-              <th>Enlace</th>
-            </tr>
-          </thead>
-          <tbody>{this.ponerFilas()}</tbody>
-        </table>
+        <h1>Usuarios</h1>
+        {this.ponerContenido()}
       </div>
     );
   }
@@ -41,6 +39,4 @@ const mapStateToProps = reducers => {
   return reducers.usuariosReducer;
 };
 
-export default connect(mapStateToProps, {
-  /*Accion Creator*/
-})(Usuarios);
+export default connect(mapStateToProps, usuariosActions)(Usuarios);
